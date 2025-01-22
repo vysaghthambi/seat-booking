@@ -1,31 +1,36 @@
-import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
-import { Seat, seats } from "../../utils/seats";
-import style from "./Seats.module.css";
-import { useState } from "react";
-import Typography from "@mui/material/Typography";
+import { useDispatch, useSelector } from "react-redux";
+
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import ChairOutlinedIcon from "@mui/icons-material/ChairOutlined";
+
+import { RootState } from "../../redux/store";
 import SeatInput from "./SeatInput/SeatInput";
+import { Seat, seats } from "../../utils/seats";
+import { add, remove } from "../../redux/seatSlice";
+
+import style from "./Seats.module.css";
 
 export default function Seats() {
-  const [selectedSeats, setSeats] = useState<Seat[]>([]);
+  const selectedSeats = useSelector(
+    (state: RootState) => state.seat.selectedSeats
+  );
+  const dispatch = useDispatch();
 
-  const addOrRemoveSeats = (selectedSeat: Seat) => {
+  const addOrRemoveSeats = (seat: Seat) => {
     if (selectedSeats.length === 8) {
       window.alert("You can only select up to 8 seats");
       return;
     }
 
     const index = selectedSeats.findIndex(
-      (seat) => seat.id === selectedSeat.id
+      (selectedSeat) => selectedSeat.id === seat.id
     );
 
     if (index === -1) {
-      setSeats((prev) => [...prev, selectedSeat]);
+      dispatch(add(seat));
     } else {
-      const newValue = [...selectedSeats];
-
-      newValue.splice(index, 1);
-      setSeats(newValue);
+      dispatch(remove(index));
     }
   };
 
