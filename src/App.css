@@ -1,0 +1,23 @@
+main {
+  display: flex;
+  flex-direction: column;
+
+  height: 100svh;
+}
+
+header {
+  background-color: #FFF;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 3px 3px rgba(255, 255, 255, .7);
+}
+
+section {
+  flex-grow: 1;
+  padding: 20px 40px;
+
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 30px;
+}

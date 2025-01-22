@@ -1,0 +1,12 @@
+.SeatsContainer {
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 20px 20px;
+  height: fit-content;
+}
+
+.Seats {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  row-gap: 15px;
+}
