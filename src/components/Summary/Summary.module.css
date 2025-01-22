@@ -2,7 +2,8 @@
   background-color: #FFF;
   border-radius: 5px;
   height: fit-content;
-  padding: 20px 20px;
+  padding: 10px 10px;
+  margin-top: 10px;
 }
 
 .Summary {
@@ -11,4 +12,11 @@
   grid-template-rows: 1fr 1fr;
   column-gap: 10px;
   row-gap: 10px;
+}
+
+@media screen and (min-width:830px) {
+  .SummaryContainer {
+    padding: 20px 20px;
+    margin-top: 0;
+  }
 }
